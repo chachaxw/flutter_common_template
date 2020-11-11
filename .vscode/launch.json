@@ -1,0 +1,25 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "开发环境",
+      "type": "dart",
+      "request": "launch",
+      "program": "lib/main_dev.dart"
+    },
+    {
+      "name": "测试环境",
+      "type": "dart",
+      "request": "launch",
+      "program": "lib/main_test.dart"
+    },
+    {
+      "name": "生产环境",
+      "request": "launch",
+      "type": "dart"
+    }
+  ]
+}
