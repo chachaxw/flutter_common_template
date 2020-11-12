@@ -2,6 +2,12 @@
 
 flutter项目通用模板
 
+![building](https://img.shields.io/badge/building-passing-green)
+![issues](https://img.shields.io/github/issues/chachaxw/flutter_common_template)
+![forks](https://img.shields.io/github/forks/chachaxw/flutter_common_template)
+![stars](https://img.shields.io/github/stars/chachaxw/flutter_common_template)
+![license](https://img.shields.io/github/license/chachaxw/flutter_common_template)
+
 ## 1.1 开始
 
 这份说明将为你展示该项目结构、所用工具以及运行环境、代码规范等，请认真阅读
