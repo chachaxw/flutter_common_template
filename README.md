@@ -210,7 +210,7 @@ class ShowToastAction extends BaseAction {
 }
 ```
 
-具体详情可以👉![Action Subclassing](https://pub.flutter-io.cn/packages/async_redux#action-subclassing)
+具体详情可以👉[Action Subclassing](https://pub.flutter-io.cn/packages/async_redux#action-subclassing)
 
 #### Models
 
@@ -231,7 +231,7 @@ class MainState {
 
 ```
 
-所有的 Model 基本包含两个要素，一个`initialState` 初始化状态的方法, 一个修改状态的`copy`方法, 当Action当中需要修改状态时, 可以借助该类下面的copy方法来修改状态, 以便重新渲染UI界面.具体详情可以👉![State Declaration](https://pub.flutter-io.cn/packages/async_redux#state-declaration)
+所有的 Model 基本包含两个要素，一个`initialState` 初始化状态的方法, 一个修改状态的`copy`方法, 当Action当中需要修改状态时, 可以借助该类下面的copy方法来修改状态, 以便重新渲染UI界面.具体详情可以👉[State Declaration](https://pub.flutter-io.cn/packages/async_redux#state-declaration)
 
 #### View Model
 
