@@ -1,10 +1,10 @@
 import 'dart:ui';
 
 class AppColors {
-  static Color primaryColor = Color(0xFF0078FF);
+  static Color primaryColor = Color(0x64FFDA);
   static Color textColor = Color(0xFF010D19);
   static Color darkGreyColor = Color(0xFF536073);
-  static Color lightColor = Color(0xFFEDEFF2);
+  static Color lightGreyColor = Color(0xFFEDEFF2);
   static Color darkBlackColor = Color(0xFF444444);
   static Color backgroundColor = Color(0xFFF5F5F8);
   static Color greenColor = Color(0xFF58CC7E);
