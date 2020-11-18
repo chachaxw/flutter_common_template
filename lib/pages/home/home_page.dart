@@ -1,14 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_common_template/widgets/widgets.dart';
 import 'package:flutter_common_template/services/services.dart';
 import 'view_models/view_models.dart';
-
-final pathIcon = SvgPicture.asset('assets/icons/path_icon.svg');
-final taskIcon = SvgPicture.asset('assets/icons/task_icon.svg');
-final menuIcon = SvgPicture.asset('assets/icons/menu_icon.svg');
-final locationIcon = SvgPicture.asset('assets/icons/location_icon.svg');
 
 class HomePage extends StatefulWidget {
   HomePage({Key key}) : super(key: key);

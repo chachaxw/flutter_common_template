@@ -7,7 +7,7 @@
          FlutterApplication and put your custom class here. -->
     <application
         android:name="io.flutter.app.FlutterApplication"
-        android:label="flutter_common_template"
+        android:label="Flutter开发模板"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
