@@ -9,13 +9,13 @@ abstract class BaseWidget<St extends BaseState, VM> extends StatefulWidget {
 
   @override
   State<StatefulWidget> createState() {
-    return _BaseWidgetState();
+    return BaseWidgetState();
   }
 
   Widget buildWidget(BuildContext context);
 }
 
-class _BaseWidgetState extends State<BaseWidget> {
+class BaseWidgetState extends State<BaseWidget> {
   @override
   void initState() {
     super.initState();

@@ -1,0 +1,1 @@
+enum PageStatus { ERROR, CONTENT, EMPTY, PROGRESS }
