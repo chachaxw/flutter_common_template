@@ -1,21 +1,41 @@
 import 'package:flutter_svg/svg.dart';
+import 'package:flutter_common_template/core/base/base.dart';
+import 'package:flutter_common_template/utils/utils.dart';
 
 class TabItem {
-  final String title;
+  final String label;
   final SvgPicture icon;
   final SvgPicture activeIcon;
 
-  TabItem({this.title, this.icon, this.activeIcon});
+  TabItem({this.label, this.icon, this.activeIcon});
 }
 
-class HomeState {
-  final String title;
+List<TabItem> tabList = [
+  TabItem(
+    label: '首页',
+    icon: AppIcons.homeIcon,
+    activeIcon: AppIcons.homeActiveIcon,
+  ),
+  TabItem(
+    label: '发现',
+    icon: AppIcons.discoverIcon,
+    activeIcon: AppIcons.discoverActiveIcon,
+  ),
+  TabItem(
+    label: '我的',
+    icon: AppIcons.userIcon,
+    activeIcon: AppIcons.userActiveIcon,
+  ),
+];
 
-  HomeState({this.title});
+class HomeState extends BaseState {
+  final List<TabItem> tabs;
 
-  static HomeState initialState() => HomeState(title: 'Home');
+  HomeState({this.tabs});
 
-  HomeState copy({String title}) => HomeState(title: title);
+  static HomeState initialState() => HomeState(tabs: tabList);
+
+  HomeState copy({String title}) => HomeState();
 
   @override
   String toString() {

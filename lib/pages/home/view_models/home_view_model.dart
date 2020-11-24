@@ -20,6 +20,7 @@ class HomeViewModel extends AppBaseModel<AppState> {
     @required this.appEnv,
     @required this.setAppEnv,
     @required this.redirect,
+    @required this.tabs,
   }) : super(equals: [appEnv]);
 
   @override
@@ -28,6 +29,7 @@ class HomeViewModel extends AppBaseModel<AppState> {
 
     return new HomeViewModel.build(
       appEnv: mainState.appEnv,
+      tabs: state.homeState.tabs,
       redirect: (String routeName) =>
           dispatch(NavigateAction.pushNamed(routeName)),
       logout: () => dispatch(LogoutAction()),

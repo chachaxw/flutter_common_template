@@ -11,8 +11,7 @@ class LoginAction extends BaseAction {
 
   @override
   Future<AppState> reduce() async {
-    dispatch(NavigateAction.pushNamed(AppRoutes.homePage));
-
+    dispatch(NavigateAction.pushNamedAndRemoveAll(AppRoutes.homePage));
     return state.copy(loginState: loginState.copy(isLogin: true));
   }
 

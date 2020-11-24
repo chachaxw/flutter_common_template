@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:async_redux/async_redux.dart';
-
 import 'package:flutter_common_template/utils/utils.dart';
 import 'package:flutter_common_template/models/models.dart';
 import 'actions/actions.dart';
@@ -65,13 +64,13 @@ class _LoginPageState extends State<LoginPage> {
                         Expanded(
                           child: Container(
                             margin:
-                                EdgeInsets.only(top: 28, left: 52, right: 52),
+                                EdgeInsets.only(top: 32, left: 52, right: 52),
                             height: 40,
                             child: CupertinoButton(
                               padding: EdgeInsets.all(0),
                               color: AppColors.darkBlueColor,
                               onPressed: vm.login,
-                              disabledColor: const Color(0x55132547),
+                              disabledColor: AppColors.darkBlackColor,
                               borderRadius: BorderRadius.circular(2),
                               child: Container(
                                 alignment: Alignment.center,
@@ -79,7 +78,7 @@ class _LoginPageState extends State<LoginPage> {
                                   '登录',
                                   style: TextStyle(
                                     fontSize: 18,
-                                    color: const Color(0xFFFFFFFF),
+                                    color: CupertinoColors.white,
                                   ),
                                 ),
                               ),
@@ -102,7 +101,7 @@ class _LoginPageState extends State<LoginPage> {
 class _ViewModel extends BaseModel<AppState> {
   _ViewModel();
 
-  Function() login;
+  Function login;
 
   _ViewModel.build({
     @required this.login,
