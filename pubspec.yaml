@@ -24,9 +24,12 @@ dependencies:
   flutter_svg: ^0.19.1
   http: ^0.12.0+4
   toast: ^0.1.5
+  dio: ^3.0.9
+  jpush_flutter: 0.5.5
   permission: ^0.1.7
   package_info: ^0.4.0+3
   connectivity: ^0.4.5+3
+  flutter_bugly: ^0.2.8
   shared_preferences: ^0.5.3+4
   url_launcher: ^5.0.2
   flutter_easyloading: ^1.2.0

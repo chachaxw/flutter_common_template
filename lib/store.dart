@@ -11,12 +11,21 @@ final Store store = new Store<AppState>(
   modelObserver: DefaultModelObserver(),
 );
 
-Future<void> loadLocalData(Store store) async {
+Future<void> loadLocalData(Store store, {String defaultEnv}) async {
   SharedPreferences pref = await SharedPreferences.getInstance();
   String appEnv = pref.getString(SharedKeys.appEnv);
 
   // 进入App前首先判断运行环境
-  AppEnvironment currentEnv = getAppEnv(appEnv);
+  AppEnvironment currentEnv;
+
+  /// 进入App前首先判断运行环境
+  if (inProduction && defaultEnv == NetworkEnvironment.PRODUCTION.toString()) {
+    /// main.dart 强制为生产环境
+    currentEnv = getAppEnv(NetworkEnvironment.PRODUCTION.toString());
+  } else {
+    /// 默认运行环境为指定的环境
+    currentEnv = getAppEnv(appEnv ?? defaultEnv);
+  }
 
   print('当前运行环境 ${currentEnv?.name}');
   store.dispatch(SaveAppEnvAction(currentEnv));
