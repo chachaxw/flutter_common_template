@@ -36,7 +36,7 @@ abstract class BaseAction extends ReduxAction<AppState> {
   showLoading({String msg, Widget indicator}) {
     EasyLoading.show(
       status: msg ?? '加载中…',
-      indicator: indicator ?? widgets.LoadingWidget(),
+      indicator: indicator,
     );
   }
 

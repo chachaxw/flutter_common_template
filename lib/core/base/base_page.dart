@@ -1,12 +1,14 @@
-import 'package:async_redux/async_redux.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:async_redux/async_redux.dart';
 import 'package:flutter_common_template/widgets/widgets.dart';
+import 'package:flutter_common_template/store.dart';
 import 'package:flutter_common_template/utils/utils.dart';
+import 'package:flutter_common_template/models/models.dart';
 import 'page_status.dart';
 import 'base_state.dart';
 import 'base_model.dart';
-import 'base_page_widget.dart';
+import 'base_widget.dart';
 
 abstract class _PageStateLifecycle<VM extends AppBaseModel,
     St extends BaseState> {
@@ -41,19 +43,25 @@ mixin _PageStatusWidgetsMiXin<VM extends AppBaseModel, St extends BaseState>
 abstract class BasePage<VM extends AppBaseModel, St extends BaseState>
     extends _PageStateLifecycle<VM, St> with _PageStatusWidgetsMiXin<VM, St> {
   BuildContext _context;
-
   BuildContext get context => _context;
-  dynamic arguments;
-  St _state;
-  Dispatch<St> _dispatch;
 
+  dynamic arguments;
+
+  St _state;
+  St get state => _state;
+
+  Dispatch<St> _dispatch;
   Dispatch<St> get dispatch => _dispatch;
 
   BasePage({this.arguments});
 
   VM createViewModel(BuildContext context);
 
-  St createState(BuildContext context);
+  // St createState(BuildContext context);
+
+  AppState createState(BuildContext context) {
+    return store.state;
+  }
 
   Widget buildPage(BuildContext context) {
     return buildStoreConnector(context);
@@ -70,9 +78,11 @@ abstract class BasePage<VM extends AppBaseModel, St extends BaseState>
       model: createViewModel(context),
       builder: (BuildContext context, VM vm) {
         Store store = StoreProvider.of<St>(context, null);
+
         this._dispatch = store.dispatch;
         this._context = context;
         this._state = store.state;
+
         return CupertinoPageScaffold(
           resizeToAvoidBottomInset: resizeToAvoidBottomInset(),
           navigationBar: _buildHeader(context, vm),
@@ -133,7 +143,7 @@ abstract class BasePage<VM extends AppBaseModel, St extends BaseState>
   Widget _buildBackWidget(BuildContext context, VM vm) {
     return CupertinoButton(
       minSize: 32.0,
-      padding: EdgeInsets.only(left: 0, right: 0),
+      padding: EdgeInsets.zero,
       child: Icon(CupertinoIcons.back),
       onPressed: () {
         onPressBack(context, vm);
@@ -152,10 +162,38 @@ abstract class BasePage<VM extends AppBaseModel, St extends BaseState>
   }
 
   Widget _buildContent(BuildContext context, St state, VM vm) {
-    return BasePageWidget(
+    return _BasePageWidget(
       basePage: this,
       state: state,
       vm: vm,
     );
+  }
+}
+
+class _BasePageWidget<VM extends AppBaseModel, St extends BaseState>
+    extends BaseWidget<St, VM> {
+  final BasePage basePage;
+
+  _BasePageWidget({this.basePage, St state, VM vm})
+      : super(state: state, vm: vm);
+
+  @override
+  State<StatefulWidget> createState() {
+    return BaseWidgetState();
+  }
+
+  Widget buildWidget(BuildContext context) {
+    switch (state.pageStatus) {
+      case PageStatus.EMPTY:
+      case PageStatus.ERROR:
+        return basePage.emptyWidget(vm, basePage);
+      case PageStatus.CONTENT:
+        return Container(
+          color: AppColors.lightGreyColor,
+          child: basePage.build(context, vm),
+        );
+      default:
+        return basePage.loadingWidget(vm);
+    }
   }
 }

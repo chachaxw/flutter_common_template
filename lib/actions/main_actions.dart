@@ -11,7 +11,7 @@ class ShowDialogAction extends BaseAction {
   String msg;
   BuildContext context;
 
-  ShowDialogAction(this.msg, this.context);
+  ShowDialogAction(this.context, this.msg);
 
   @override
   AppState reduce() {
