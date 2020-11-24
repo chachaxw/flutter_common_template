@@ -1,66 +1,22 @@
-import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_common_template/widgets/widgets.dart';
-import 'package:flutter_common_template/services/services.dart';
+import 'package:flutter_common_template/core/base/base.dart';
+import 'package:flutter_common_template/models/models.dart';
 import 'view_models/view_models.dart';
+import 'widgets/home_container.dart';
 
-class HomePage extends StatefulWidget {
-  HomePage({Key key}) : super(key: key);
-
+class HomePage extends BasePage<HomeViewModel, AppState> {
   @override
-  State<StatefulWidget> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  bool visible = false;
-
-  @override
-  void initState() {
-    super.initState();
-  }
-
-  Future<void> showSelectEnvDialog(
-      BuildContext context, HomeViewModel vm) async {
-    var data = await showCupertinoModalPopup(
-      context: context,
-      builder: (BuildContext context) => SelectEnvDialog(),
-    );
-
-    if (data != null) {
-      AppEnvironment env = data['env'];
-
-      if (vm.appEnv?.env != env.env) {
-        /// 退出登录
-        vm.logout();
-
-        /// 切换环境
-        vm.setAppEnv(env);
-      }
-    }
-  }
-
-  Widget _buildEnvView(HomeViewModel vm) {
-    return Positioned(
-      left: 16.0,
-      right: 16.0,
-      bottom: 32.0,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Text('当前环境'),
-          Padding(padding: EdgeInsets.only(right: 8.0)),
-          CupertinoButton(
-            padding: EdgeInsets.all(0),
-            child: Text('${vm.appEnv?.name}'),
-            onPressed: () => showSelectEnvDialog(context, vm),
-          ),
-        ],
-      ),
-    );
+  title() {
+    return '首页';
   }
 
   @override
-  Widget build(BuildContext context) {
-    return new MaterialApp(home: TabNavigator());
+  Widget build(BuildContext context, HomeViewModel vm) {
+    return HomeContainer(vm: vm);
+  }
+
+  @override
+  HomeViewModel createViewModel(BuildContext context) {
+    return HomeViewModel();
   }
 }
