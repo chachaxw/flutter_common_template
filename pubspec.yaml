@@ -19,7 +19,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  async_redux: ^2.5.7
+  async_redux: ^6.0.2
   common_utils: ^1.1.1
   flutter_svg: ^0.19.1
   http: ^0.12.0+4
@@ -59,6 +59,7 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
+    - assets/images/background.png
     - assets/icons/home.svg
     - assets/icons/discover.svg
     - assets/icons/user.svg

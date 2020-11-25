@@ -1,11 +1,23 @@
 PODS:
+  - Bugly (2.5.71)
   - connectivity (0.0.1):
     - Flutter
     - Reachability
   - Flutter (1.0.0)
+  - flutter_bugly (0.0.1):
+    - Bugly
+    - Flutter
+  - JCore (2.4.0)
+  - JPush (3.3.6):
+    - JCore (< 3.0.0, >= 2.0.0)
+  - jpush_flutter (0.0.2):
+    - Flutter
+    - JPush
   - package_info (0.0.1):
     - Flutter
   - path_provider (0.0.1):
+    - Flutter
+  - permission (0.0.1):
     - Flutter
   - Reachability (3.2)
   - shared_preferences (0.0.1):
@@ -16,13 +28,19 @@ PODS:
 DEPENDENCIES:
   - connectivity (from `.symlinks/plugins/connectivity/ios`)
   - Flutter (from `Flutter`)
+  - flutter_bugly (from `.symlinks/plugins/flutter_bugly/ios`)
+  - jpush_flutter (from `.symlinks/plugins/jpush_flutter/ios`)
   - package_info (from `.symlinks/plugins/package_info/ios`)
   - path_provider (from `.symlinks/plugins/path_provider/ios`)
+  - permission (from `.symlinks/plugins/permission/ios`)
   - shared_preferences (from `.symlinks/plugins/shared_preferences/ios`)
   - url_launcher (from `.symlinks/plugins/url_launcher/ios`)
 
 SPEC REPOS:
   trunk:
+    - Bugly
+    - JCore
+    - JPush
     - Reachability
 
 EXTERNAL SOURCES:
@@ -30,20 +48,32 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/connectivity/ios"
   Flutter:
     :path: Flutter
+  flutter_bugly:
+    :path: ".symlinks/plugins/flutter_bugly/ios"
+  jpush_flutter:
+    :path: ".symlinks/plugins/jpush_flutter/ios"
   package_info:
     :path: ".symlinks/plugins/package_info/ios"
   path_provider:
     :path: ".symlinks/plugins/path_provider/ios"
+  permission:
+    :path: ".symlinks/plugins/permission/ios"
   shared_preferences:
     :path: ".symlinks/plugins/shared_preferences/ios"
   url_launcher:
     :path: ".symlinks/plugins/url_launcher/ios"
 
 SPEC CHECKSUMS:
+  Bugly: fd066c75c4a0eca1440f9b6a84bd37d51bfc85ac
   connectivity: c4130b2985d4ef6fd26f9702e886bd5260681467
   Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
+  flutter_bugly: c9800f4d5bc5bdc27ffdde3417a26ba44266e0c3
+  JCore: a29e4b0ee54e1301446dc02d8e1c350404108b34
+  JPush: a401b946dcc76b37335422487201bc1ecc8dd296
+  jpush_flutter: 69133df35eaf9135e540549b154d992c44f8ee44
   package_info: 873975fc26034f0b863a300ad47e7f1ac6c7ec62
   path_provider: abfe2b5c733d04e238b0d8691db0cfd63a27a93c
+  permission: c186483e23779d53def6b55986323494927c22c8
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   shared_preferences: af6bfa751691cdc24be3045c43ec037377ada40d
   url_launcher: 6fef411d543ceb26efce54b05a0a40bfd74cbbef

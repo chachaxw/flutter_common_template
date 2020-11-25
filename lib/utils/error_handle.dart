@@ -1,20 +1,23 @@
 import 'package:flutter/cupertino.dart';
-import 'utils.dart';
+import 'color_utils.dart';
 
 Widget handleException(FlutterErrorDetails flutterErrorDetails) {
-  print(flutterErrorDetails.toString());
+  print('Flutter崩溃了: ${flutterErrorDetails.toString()}');
 
   return Container(
-    color: CupertinoColors.white,
+    color: AppColors.whiteColor,
     child: Center(
-      child: Text(
-        "Flutter 崩溃了",
-        style: TextStyle(
-          fontSize: 18,
-          fontWeight: FontWeight.bold,
-          color: AppColors.textColor,
+      child: Directionality(
+        textDirection: TextDirection.ltr,
+        child: Text(
+          "Flutter 崩溃了",
+          style: TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+            color: AppColors.errorColor,
+          ),
         ),
-      ),
+      )
     ),
   );
 }
