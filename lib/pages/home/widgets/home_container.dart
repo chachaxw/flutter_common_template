@@ -6,8 +6,9 @@ import '../models/models.dart';
 
 class HomeContainer extends StatefulWidget {
   final HomeViewModel vm;
+  final Function(int) onTabChange;
 
-  HomeContainer({@required this.vm});
+  HomeContainer({@required this.vm, this.onTabChange});
 
   @override
   State<StatefulWidget> createState() {
@@ -29,6 +30,10 @@ class HomeContainerState extends State<HomeContainer> {
         backgroundColor: CupertinoColors.white,
       ),
       tabBuilder: (context, index) {
+        if (widget.onTabChange != null) {
+          widget.onTabChange(index);
+        }
+
         switch (index) {
           case 0:
             return Center(child: Text('首页'));
@@ -40,9 +45,10 @@ class HomeContainerState extends State<HomeContainer> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text("我的"),
-                  Padding(padding: EdgeInsets.only(bottom: 16)),
+                  Padding(padding: EdgeInsets.only(bottom: 32)),
                   CupertinoButton(
                     child: Text("退出登录"),
+                    minSize: 32,
                     color: AppColors.primaryColor,
                     onPressed: () {
                       widget.vm.logout();

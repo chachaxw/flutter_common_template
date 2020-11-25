@@ -77,7 +77,7 @@ abstract class BasePage<VM extends AppBaseModel, St extends BaseState>
       onDidChange: onDidChange,
       model: createViewModel(context),
       builder: (BuildContext context, VM vm) {
-        Store store = StoreProvider.of<St>(context, null);
+        Store<St> store = StoreProvider.of<St>(context, null);
 
         this._dispatch = store.dispatch;
         this._context = context;
@@ -108,7 +108,6 @@ abstract class BasePage<VM extends AppBaseModel, St extends BaseState>
     return CupertinoNavigationBar(
       border: null,
       middle: _buildTitle(context, vm),
-      leading: _buildBackWidget(context, vm),
       trailing: _rightTitleWidget(context, vm),
       backgroundColor: CupertinoColors.white,
     );

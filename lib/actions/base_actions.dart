@@ -13,15 +13,15 @@ abstract class BaseAction extends ReduxAction<AppState> {
   HomeState get homeState => state.homeState;
 
   showToast(
-      BuildContext buildContext,
-      String msg, {
-        int duration = 2,
-        int gravity = 1,
-        Color backgroundColor = const Color(0xAA000000),
-        Color textColor = AppColors.whiteColor,
-        double backgroundRadius = 20,
-        Border border,
-      }) {
+    BuildContext buildContext,
+    String msg, {
+    int duration = 2,
+    int gravity = 1,
+    Color backgroundColor = const Color(0xAA000000),
+    Color textColor = AppColors.whiteColor,
+    double backgroundRadius = 20,
+    Border border,
+  }) {
     Toast.show(
       msg,
       buildContext,

@@ -88,8 +88,6 @@ class LogoutAction extends BaseAction {
 
   @override
   Future<AppState> reduce() async {
-    dispatch(NavigateAction.pop());
-
     return state.copy(loginState: loginState.copy(isLogin: false));
   }
 
