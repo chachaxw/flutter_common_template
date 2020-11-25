@@ -43,7 +43,7 @@ class EmptyWidget<St extends BaseState, VM extends AppBaseModel>
                 textAlign: TextAlign.center,
               ),
               onPressed: () {
-                basePage?.onRefresh(context, basePage._state.pageStatusNotifier);
+                basePage?.onRefresh(context, basePage.state.pageStatusNotifier);
               },
             ),
           ),
