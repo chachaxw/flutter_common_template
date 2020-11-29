@@ -1,7 +1,7 @@
 import 'package:async_redux/async_redux.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_common_template/actions/actions.dart';
-import 'package:flutter_common_template/services/services.dart';
+import 'package:flutter_common_template/http/http.dart';
 import 'package:flutter_common_template/models/models.dart';
 import 'package:flutter_common_template/utils/utils.dart';
 
@@ -34,7 +34,7 @@ Future<void> loadLocalData(Store store, {String defaultEnv}) async {
   String token = pref.getString(SharedKeys.accessToken);
 
   if (token != null && token.length > 0) {
-    RequestConfig.instance.userToken = token;
-    RequestConfig.instance.env = currentEnv?.env;
+    HttpConfig.instance.userToken = token;
+    HttpConfig.instance.env = currentEnv?.env;
   }
 }
