@@ -2,7 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:async_redux/async_redux.dart';
 import 'package:flutter_common_template/models/models.dart';
 import 'package:flutter_common_template/actions/actions.dart';
-import 'package:flutter_common_template/services/services.dart';
+import 'package:flutter_common_template/http/env.dart';
 import 'package:flutter_common_template/core/base/base_model.dart';
 import '../models/models.dart';
 

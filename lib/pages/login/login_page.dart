@@ -69,9 +69,9 @@ class _LoginPageState extends State<LoginPage> {
                     height: 50,
                     child: CupertinoButton(
                       padding: EdgeInsets.all(0),
-                      color: AppColors.darkBlueColor,
+                      color: AppColors.primaryColor,
                       onPressed: vm.login,
-                      disabledColor: AppColors.darkBlackColor,
+                      disabledColor: AppColors.darkBlueColor,
                       borderRadius: BorderRadius.circular(2),
                       child: Container(
                         alignment: Alignment.center,
