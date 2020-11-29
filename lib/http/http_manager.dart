@@ -300,10 +300,7 @@ class HttpManager {
     //强制 POST 请求
     options?.method = POST;
 
-    options = options ??
-        Options(
-          method: POST,
-        );
+    options = options ?? Options(method: POST);
 
     url = _restfulUrl(url, params);
 
@@ -327,7 +324,7 @@ class HttpManager {
 
       String statusCode = response.data["statusCode"];
       if (statusCode == "0") {
-        //成功
+        // 成功
         if (jsonParse != null) {
           return jsonParse(response.data["data"]);
         } else {

@@ -1,10 +1,9 @@
 import 'package:toast/toast.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:async_redux/async_redux.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_common_template/actions/actions.dart';
 import 'package:flutter_common_template/models/models.dart';
-import 'package:flutter_common_template/services/services.dart';
+import 'package:flutter_common_template/http/http.dart';
 import 'package:flutter_common_template/utils/utils.dart';
 
 class ShowDialogAction extends BaseAction {
@@ -64,7 +63,7 @@ class SaveAppEnvAction extends BaseAction {
   Future<AppState> reduce() async {
     SharedPreferences pref = await SharedPreferences.getInstance();
 
-    RequestConfig.instance.env = appEnv.env;
+    HttpConfig.instance.env = appEnv.env;
     pref.setString(SharedKeys.appEnv, appEnv.env.toString());
 
     return state.copy(mainState: mainState.clone()..appEnv = appEnv);
