@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'package:git_hooks/git_hooks.dart';
 
-void main(List arguments) {
+void main(List<String> arguments) {
   Map<Git, UserBackFun> params = {
     Git.commitMsg: commitMsg,
     Git.preCommit: preCommit

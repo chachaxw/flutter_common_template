@@ -85,7 +85,7 @@ abstract class BasePage<VM extends AppBaseModel, St extends BaseState>
 
         return CupertinoPageScaffold(
           resizeToAvoidBottomInset: resizeToAvoidBottomInset(),
-          navigationBar: _buildHeader(context, vm),
+          navigationBar: buildHeader(context, vm),
           child: _buildContent(context, _state, vm),
         );
       },
@@ -100,7 +100,7 @@ abstract class BasePage<VM extends AppBaseModel, St extends BaseState>
     return false;
   }
 
-  Widget _buildHeader(BuildContext context, VM vm) {
+  Widget buildHeader(BuildContext context, VM vm) {
     if (hideHeader()) {
       return null;
     }
@@ -108,6 +108,7 @@ abstract class BasePage<VM extends AppBaseModel, St extends BaseState>
     return CupertinoNavigationBar(
       border: null,
       middle: _buildTitle(context, vm),
+      leading: _buildBackWidget(context, vm),
       trailing: _rightTitleWidget(context, vm),
       backgroundColor: CupertinoColors.white,
     );
