@@ -13,7 +13,7 @@ Map<String, WidgetBuilder> routes = {
 };
 
 Widget pageRoute(BuildContext context,
-    {@required RouteSettings routeSettings}) {
+    {required RouteSettings routeSettings}) {
   return (_pageForRoute(routeSettings)..arguments = routeSettings.arguments)
       .buildPage(context);
 }

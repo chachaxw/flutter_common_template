@@ -4,7 +4,7 @@ import 'package:flutter_common_template/utils/utils.dart';
 
 class EmptyWidget<St extends BaseState, VM extends AppBaseModel>
     extends BaseWidget<St, VM> {
-  final BasePage basePage;
+  final BasePage? basePage;
 
   EmptyWidget(VM vm, {this.basePage}) : super(vm: vm);
 
@@ -43,7 +43,7 @@ class EmptyWidget<St extends BaseState, VM extends AppBaseModel>
                 textAlign: TextAlign.center,
               ),
               onPressed: () {
-                basePage?.onRefresh(context, basePage.state.pageStatusNotifier);
+                basePage?.onRefresh(context, basePage?.state.pageStatusNotifier);
               },
             ),
           ),

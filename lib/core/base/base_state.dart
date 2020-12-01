@@ -2,7 +2,7 @@ import 'package:flutter/widgets.dart';
 import 'page_status.dart';
 
 class BaseState {
-  ValueNotifier<PageStatus> _pageStatusNotifier;
+  late ValueNotifier<PageStatus> _pageStatusNotifier;
 
   ValueNotifier<PageStatus> get pageStatusNotifier => _pageStatusNotifier;
 
@@ -12,7 +12,7 @@ class BaseState {
     _pageStatusNotifier.value = pageStatus;
   }
 
-  BaseState({ValueNotifier<PageStatus> pageStatusNotifier}) {
+  BaseState({ValueNotifier<PageStatus>? pageStatusNotifier}) {
     _pageStatusNotifier =
         pageStatusNotifier ?? ValueNotifier(PageStatus.CONTENT);
   }

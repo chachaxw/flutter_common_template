@@ -5,12 +5,12 @@ import 'package:flutter_common_template/utils/utils.dart';
 final checkedIcon = SvgPicture.asset('assets/icons/check_mark.svg');
 
 class Radio extends StatelessWidget {
-  final String label;
+  final String? label;
   final bool checked;
-  final Function onChange;
+  final void Function()? onChange;
 
   const Radio({
-    Key key,
+    Key? key,
     this.label,
     this.onChange,
     this.checked = false,
