@@ -6,9 +6,9 @@ import '../models/models.dart';
 
 class HomeContainer extends StatefulWidget {
   final HomeViewModel vm;
-  final Function(int) onTabChange;
+  final Function(int)? onTabChange;
 
-  HomeContainer({@required this.vm, this.onTabChange});
+  HomeContainer({required this.vm, this.onTabChange});
 
   @override
   State<StatefulWidget> createState() {
@@ -30,9 +30,7 @@ class HomeContainerState extends State<HomeContainer> {
         backgroundColor: CupertinoColors.white,
       ),
       tabBuilder: (context, index) {
-        if (widget.onTabChange != null) {
-          widget.onTabChange(index);
-        }
+        widget.onTabChange!(index);
 
         switch (index) {
           case 0:

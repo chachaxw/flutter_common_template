@@ -1,4 +1,4 @@
-import 'package:flutter/foundation.dart';
+// ignore: import_of_legacy_library_into_null_safe
 import 'package:async_redux/async_redux.dart';
 import 'package:flutter_common_template/models/models.dart';
 import 'package:flutter_common_template/actions/actions.dart';
@@ -9,18 +9,18 @@ import '../models/models.dart';
 class HomeViewModel extends AppBaseModel<AppState> {
   HomeViewModel();
 
-  Function logout;
-  AppEnvironment appEnv;
-  List<TabItem> tabs;
-  Function(String) redirect;
-  Function(AppEnvironment) setAppEnv;
+  late Function logout;
+  late AppEnvironment appEnv;
+  late List<TabItem> tabs;
+  late Function(String) redirect;
+  late Function(AppEnvironment) setAppEnv;
 
   HomeViewModel.build({
-    @required this.logout,
-    @required this.appEnv,
-    @required this.setAppEnv,
-    @required this.redirect,
-    @required this.tabs,
+    required this.logout,
+    required this.appEnv,
+    required this.setAppEnv,
+    required this.redirect,
+    required this.tabs,
   }) : super(equals: [appEnv]);
 
   @override
