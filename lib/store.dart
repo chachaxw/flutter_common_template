@@ -33,7 +33,7 @@ Future<void> loadLocalData(Store store, {String? defaultEnv}) async {
   // 加载用户的令牌
   String? token = pref.getString(SharedKeys.accessToken);
 
-  if (token != null && token.length > 0) {
+  if (token.length > 0) {
     HttpConfig.instance.userToken = token;
     HttpConfig.instance.env = currentEnv.env;
   }

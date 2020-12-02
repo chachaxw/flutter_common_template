@@ -2,12 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_common_template/utils/utils.dart';
 
 class PickerHeader extends StatelessWidget {
-  const PickerHeader({Key key, this.onConfirm, this.onCancel, this.title})
+  const PickerHeader({Key? key, this.onConfirm, this.onCancel, this.title})
       : super(key: key);
 
-  final Function onCancel;
-  final Function onConfirm;
-  final String title;
+  final String? title;
+  final Function? onCancel;
+  final void Function()? onConfirm;
 
   @override
   Widget build(BuildContext context) {
@@ -36,13 +36,15 @@ class PickerHeader extends StatelessWidget {
               },
             ),
           ),
-          title == null ? Container() : Container(
-            child: Text(
-              title,
-              overflow: TextOverflow.ellipsis,
-              style: TextStyle(fontSize: 16, color: AppColors.textColor),
-            ),
-          ),
+          title == null
+              ? Container()
+              : Container(
+                  child: Text(
+                    title!,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(fontSize: 16, color: AppColors.textColor),
+                  ),
+                ),
           Container(
             margin: EdgeInsets.only(right: 15),
             child: CupertinoButton(

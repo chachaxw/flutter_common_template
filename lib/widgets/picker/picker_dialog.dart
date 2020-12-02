@@ -4,7 +4,7 @@ import 'package:flutter_common_template/utils/utils.dart';
 const double _kPickerSheetHeight = 300.0;
 
 class PickerDialog extends StatelessWidget {
-  PickerDialog({Key key, @required this.picker}) : super(key: key);
+  PickerDialog({Key? key, required this.picker}) : super(key: key);
 
   final Widget picker;
 

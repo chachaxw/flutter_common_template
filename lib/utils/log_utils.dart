@@ -9,11 +9,11 @@ class LogUtils {
     tag = tag;
   }
 
-  static void e(Object object, {String tag}) {
+  static void e(Object object, {required String tag}) {
     _printLog(tag, '  e  ', object);
   }
 
-  static void v(Object object, {String tag}) {
+  static void v(Object object, {required String tag}) {
     if (debug) {
       _printLog(tag, '  v  ', object);
     }

@@ -49,9 +49,9 @@ class Shimmer extends StatefulWidget {
   final int loop;
 
   Shimmer({
-    Key key,
-    @required this.child,
-    @required this.gradient,
+    Key? key,
+    required this.child,
+    required this.gradient,
     this.direction = ShimmerDirection.ltr,
     this.period = const Duration(milliseconds: 1500),
     this.loop = 0,
@@ -62,15 +62,15 @@ class Shimmer extends StatefulWidget {
   /// [Shimmer] which [gradient] is [LinearGradient] made up of `baseColor` and
   /// `highlightColor`.
   ///
-  Shimmer.fromColors(
-      {Key key,
-        @required this.child,
-        @required Color baseColor,
-        @required Color highlightColor,
-        this.period = const Duration(milliseconds: 1500),
-        this.direction = ShimmerDirection.ltr,
-        this.loop = 0})
-      : gradient = LinearGradient(
+  Shimmer.fromColors({
+    Key? key,
+    required this.child,
+    required Color baseColor,
+    required Color highlightColor,
+    this.period = const Duration(milliseconds: 1500),
+    this.direction = ShimmerDirection.ltr,
+    this.loop = 0,
+  })  : gradient = LinearGradient(
       begin: Alignment.topLeft,
       end: Alignment.centerRight,
       colors: [
@@ -104,8 +104,8 @@ class Shimmer extends StatefulWidget {
 }
 
 class _ShimmerState extends State<Shimmer> with SingleTickerProviderStateMixin {
-  AnimationController _controller;
-  int _count;
+  late AnimationController _controller;
+  late int _count;
 
   @override
   void initState() {
@@ -173,7 +173,7 @@ class _ShimmerFilter extends RenderProxyBox {
   final Gradient _gradient;
   final ShimmerDirection _direction;
   double _percent;
-  Rect _rect;
+  Rect? _rect;
 
   _ShimmerFilter(this._percent, this._direction, this._gradient)
       : _gradientPaint = Paint()..blendMode = BlendMode.srcIn;
@@ -197,6 +197,7 @@ class _ShimmerFilter extends RenderProxyBox {
       final height = child.size.height;
       Rect rect;
       double dx, dy;
+
       if (_direction == ShimmerDirection.rtl) {
         dx = _offset(width, -width, _percent);
         dy = 0.0;

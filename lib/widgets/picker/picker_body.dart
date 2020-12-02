@@ -5,21 +5,18 @@ const double _kPickerItemHeight = 50.0;
 
 class PickerBody extends StatefulWidget {
   final List list;
-  final Function(int) onChange;
+  final Function(int)? onChange;
 
-  PickerBody({Key key, this.list = const [], this.onChange}) : super(key: key);
+  PickerBody({Key? key, this.list = const [], this.onChange}) : super(key: key);
 
   @override
-  _PickerBodyState createState() =>
-      _PickerBodyState(list: list, onChange: onChange);
+  _PickerBodyState createState() => _PickerBodyState();
 }
 
 class _PickerBodyState extends State<PickerBody> {
-  _PickerBodyState({this.list, this.onChange});
+  _PickerBodyState();
 
-  List list;
   int selectedIndex = 0;
-  Function(int) onChange;
 
   @override
   void initState() {
@@ -33,14 +30,14 @@ class _PickerBodyState extends State<PickerBody> {
       backgroundColor: CupertinoColors.white,
       onSelectedItemChanged: (int index) {
         setState(() => selectedIndex = index);
-        onChange(index);
+        widget.onChange!(index);
       },
       children: List<Widget>.generate(
-        list.length,
+        widget.list.length,
         (int index) {
           return Center(
             child: Text(
-              list[index]?.name,
+              widget.list[index]?.name,
               style: TextStyle(
                 fontSize: selectedIndex == index ? 16 : 13,
                 fontWeight: selectedIndex == index

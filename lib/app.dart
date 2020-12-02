@@ -9,9 +9,9 @@ import 'package:flutter_common_template/core/base/base.dart';
 
 class App extends StatelessWidget {
   final Store<AppState> store;
-  final GlobalKey navigatorKey;
+  final GlobalKey<NavigatorState> navigatorKey;
 
-  App({this.store, this.navigatorKey}) : super();
+  App({required this.store, required this.navigatorKey}) : super();
 
   @override
   Widget build(BuildContext context) {
@@ -59,12 +59,12 @@ class App extends StatelessWidget {
 class _ViewModel extends AppBaseModel<AppState> {
   _ViewModel();
 
-  bool isLogin;
-  Function showDialog;
+  late bool isLogin;
+  late Function showDialog;
 
   _ViewModel.build({
-    @required this.isLogin,
-    @required this.showDialog,
+    required this.isLogin,
+    required this.showDialog,
   }) : super(equals: [isLogin]);
 
   @override

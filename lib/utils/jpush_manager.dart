@@ -3,7 +3,7 @@ import 'package:jpush_flutter/jpush_flutter.dart';
 
 class JPushManager {
   static var manager = JPushManager();
-  JPush jpush;
+  late JPush jpush;
 
   JPushManager() {
     jpush = JPush();
