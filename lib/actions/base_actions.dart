@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
-import 'package:async_redux/async_redux.dart';
 import 'package:toast/toast.dart';
+import 'package:async_redux/async_redux.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_common_template/models/models.dart';
 import 'package:flutter_common_template/utils/utils.dart';
@@ -20,7 +20,6 @@ abstract class BaseAction extends ReduxAction<AppState> {
     Color backgroundColor = const Color(0xAA000000),
     Color textColor = AppColors.whiteColor,
     double backgroundRadius = 20,
-    Border border,
   }) {
     Toast.show(
       msg,
@@ -29,32 +28,31 @@ abstract class BaseAction extends ReduxAction<AppState> {
       duration: duration ?? 2,
       backgroundColor: backgroundColor,
       textColor: textColor,
-      border: border,
     );
   }
 
-  showLoading({String msg, Widget indicator}) {
+  showLoading({String? msg, Widget? indicator}) {
     EasyLoading.show(
       status: msg ?? '加载中…',
       indicator: indicator,
     );
   }
 
-  showSuccess({String msg, Duration duration}) {
+  showSuccess({String? msg, Duration? duration}) {
     EasyLoading.showSuccess(
       msg ?? '操作成功',
       duration: duration,
     );
   }
 
-  showError({String msg, Duration duration}) {
+  showError({String? msg, Duration? duration}) {
     EasyLoading.showError(
       msg ?? '操作失败',
       duration: duration ?? Duration(seconds: 2),
     );
   }
 
-  showWarn({String msg, Duration duration}) {
+  showWarn({String? msg, Duration? duration}) {
     EasyLoading.dismiss(animation: false);
     EasyLoading.showInfo(
       msg ?? '操作警告',

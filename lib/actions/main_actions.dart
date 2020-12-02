@@ -13,7 +13,7 @@ class ShowDialogAction extends BaseAction {
   ShowDialogAction(this.context, this.msg);
 
   @override
-  AppState reduce() {
+  AppState? reduce() {
     showCupertinoDialog(
       context: context,
       builder: (BuildContext context) {
@@ -29,7 +29,7 @@ class ShowDialogAction extends BaseAction {
             CupertinoButton(
               child: Text('确定'),
               onPressed: () {
-                Navigator.of(context).pop();
+                Navigator.of(context)?.pop();
               },
             ),
           ],
@@ -48,7 +48,7 @@ class ShowToastAction extends BaseAction {
   ShowToastAction(this.msg, this.context);
 
   @override
-  AppState reduce() {
+  AppState? reduce() {
     Toast.show(msg, context, gravity: 1, duration: 2);
     return null;
   }
