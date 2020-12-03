@@ -28,6 +28,7 @@ class App extends StatelessWidget {
             theme: CupertinoThemeData(
               primaryColor: AppColors.primaryColor,
               scaffoldBackgroundColor: AppColors.backgroundColor,
+              barBackgroundColor: CupertinoColors.white,
             ),
             onGenerateRoute: _onGenerateRoute,
             home: UserExceptionDialog<AppState>(

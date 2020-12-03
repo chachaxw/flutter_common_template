@@ -13,9 +13,9 @@ class AppState extends BaseState {
   MainState mainState;
 
   AppState({
-    this.loginState,
-    this.homeState,
-    this.mainState,
+    required this.loginState,
+    required this.homeState,
+    required this.mainState,
   });
 
   static AppState initialState() => AppState(
@@ -25,9 +25,9 @@ class AppState extends BaseState {
       );
 
   AppState copy({
-    LoginState loginState,
-    HomeState homeState,
-    MainState mainState,
+    LoginState? loginState,
+    HomeState? homeState,
+    MainState? mainState,
   }) =>
       AppState(
         mainState: mainState ?? this.mainState,
@@ -46,7 +46,5 @@ class AppState extends BaseState {
 
   @override
   int get hashCode =>
-      loginState.hashCode ^
-      mainState.hashCode ^
-      homeState.hashCode ;
+      loginState.hashCode ^ mainState.hashCode ^ homeState.hashCode;
 }

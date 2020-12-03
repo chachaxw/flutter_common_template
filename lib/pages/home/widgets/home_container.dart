@@ -30,7 +30,9 @@ class HomeContainerState extends State<HomeContainer> {
         backgroundColor: CupertinoColors.white,
       ),
       tabBuilder: (context, index) {
-        widget.onTabChange!(index);
+        if (widget.onTabChange != null) {
+          widget.onTabChange!(index);
+        }
 
         switch (index) {
           case 0:

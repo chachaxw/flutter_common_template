@@ -12,6 +12,6 @@ void main() async {
   ErrorWidget.builder = handleException;
   NavigateAction.setNavigatorKey(navigatorKey);
 
-  await loadLocalData(store, defaultEnv: NetworkEnvironment.TEST.toString());
+  await loadLocalData(store, NetworkEnvironment.TEST.toString());
   runApp(App(store: store, navigatorKey: navigatorKey));
 }

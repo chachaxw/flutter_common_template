@@ -3,9 +3,9 @@ import 'base_state.dart';
 
 abstract class BaseWidget<St extends BaseState, VM> extends StatefulWidget {
   final VM vm;
-  final St state;
+  final St? state;
 
-  BaseWidget({required this.state, required this.vm});
+  BaseWidget({this.state, required this.vm});
 
   @override
   State<StatefulWidget> createState() {
@@ -19,12 +19,12 @@ class BaseWidgetState extends State<BaseWidget> {
   @override
   void initState() {
     super.initState();
-    widget.state.pageStatusNotifier.addListener(_onPageStatusChange);
+    widget.state?.pageStatusNotifier.addListener(_onPageStatusChange);
   }
 
   @override
   void dispose() {
-    widget.state.pageStatusNotifier.removeListener(_onPageStatusChange);
+    widget.state?.pageStatusNotifier.removeListener(_onPageStatusChange);
     super.dispose();
   }
 

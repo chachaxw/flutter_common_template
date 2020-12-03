@@ -25,9 +25,9 @@ abstract class BaseAction extends ReduxAction<AppState> {
       msg,
       buildContext,
       gravity: gravity,
-      duration: duration ?? 2,
-      backgroundColor: backgroundColor,
+      duration: duration,
       textColor: textColor,
+      backgroundColor: backgroundColor,
     );
   }
 

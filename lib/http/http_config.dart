@@ -11,11 +11,12 @@ class HttpConfig {
   late String buildNumber;
   late NetworkEnvironment env;
 
-  static HttpConfig? get instance => _getInstance();
+  static HttpConfig get instance => _getInstance();
 
-  static HttpConfig? _instance;
+  static late HttpConfig _instance;
 
-  static HttpConfig? _getInstance() {
+  static HttpConfig _getInstance() {
+    // ignore: unnecessary_null_comparison
     if (_instance == null) {
       _instance = new HttpConfig._internal();
     }

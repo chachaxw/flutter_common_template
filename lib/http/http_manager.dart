@@ -1,5 +1,7 @@
 import 'dart:core';
+// ignore: import_of_legacy_library_into_null_safe
 import 'package:dio/dio.dart';
+// ignore: import_of_legacy_library_into_null_safe
 import 'package:connectivity/connectivity.dart';
 import 'package:flutter_common_template/utils/utils.dart';
 import 'http_error.dart';
@@ -39,6 +41,7 @@ class HttpManager {
   Dio get client => _client;
 
   HttpManager._internal() {
+    // ignore: unnecessary_null_comparison
     if (_client == null) {
       BaseOptions options = BaseOptions(
           connectTimeout: CONNECT_TIMEOUT, receiveTimeout: RECEIVE_TIMEOUT);
@@ -234,7 +237,7 @@ class HttpManager {
           _cancelTokens[tag] == null ? CancelToken() : _cancelTokens[tag];
       _cancelTokens[tag] = cancelToken!;
 
-      Response<Map<String, dynamic>>? response = await _client?.request(
+      Response<Map<String, dynamic>>? response = await _client.request(
         url,
         queryParameters: params,
         data: data,
@@ -242,16 +245,16 @@ class HttpManager {
         cancelToken: cancelToken,
       );
 
-      String statusCode = response?.data["statusCode"];
+      String statusCode = response.data["statusCode"];
 
       if (statusCode == "0") {
         if (jsonParse != null) {
-          return jsonParse(response?.data["data"]);
+          return jsonParse(response.data["data"]);
         } else {
-          return response?.data["data"];
+          return response.data["data"];
         }
       } else {
-        String message = response?.data["statusDesc"];
+        String message = response.data["statusDesc"];
         // 只能用 Future，外层有 try catch
         return Future.error(HttpError(statusCode, message));
       }

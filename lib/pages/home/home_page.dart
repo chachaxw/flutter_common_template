@@ -6,8 +6,17 @@ import 'widgets/home_container.dart';
 
 class HomePage extends BasePage<HomeViewModel, AppState> {
   @override
-  title() {
-    return '首页';
+  bool hideHeader() {
+    return true;
+  }
+
+  @override
+  ObstructingPreferredSizeWidget? buildHeader(
+      BuildContext context, HomeViewModel vm) {
+    return CupertinoNavigationBar(
+      border: null,
+      middle: Text("Flutter 开发模板"),
+    );
   }
 
   @override

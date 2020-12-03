@@ -181,7 +181,7 @@ class _BasePageWidget<VM extends AppBaseModel, St extends BaseState>
   }
 
   Widget buildWidget(BuildContext context) {
-    switch (state.pageStatus) {
+    switch (state?.pageStatus) {
       case PageStatus.EMPTY:
       case PageStatus.ERROR:
         return basePage.emptyWidget(vm, basePage);
