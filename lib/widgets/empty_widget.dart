@@ -44,7 +44,7 @@ class EmptyWidget<St extends BaseState, VM extends AppBaseModel>
               ),
               onPressed: () {
                 basePage?.onRefresh(
-                    context, basePage?.state.pageStatusNotifier);
+                    context, basePage!.state.pageStatusNotifier);
               },
             ),
           ),

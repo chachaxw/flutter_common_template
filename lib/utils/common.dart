@@ -15,7 +15,7 @@ String formatNumber(int num) {
 /// 毫秒转换成 `x小时 y分 z秒`
 /// @param {number} num 毫秒数
 /// @return {string}
-String formatMillSeconds(int num) {
+String formatMillSeconds(int? num) {
   if (num == null) {
     return '0分0秒';
   }

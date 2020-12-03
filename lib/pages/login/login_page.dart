@@ -5,7 +5,7 @@ import 'package:flutter_common_template/models/models.dart';
 import 'actions/actions.dart';
 
 class LoginPage extends StatefulWidget {
-  LoginPage({Key key}) : super(key: key);
+  LoginPage({Key? key}) : super(key: key);
 
   @override
   _LoginPageState createState() => _LoginPageState();
@@ -98,10 +98,10 @@ class _LoginPageState extends State<LoginPage> {
 class _ViewModel extends BaseModel<AppState> {
   _ViewModel();
 
-  Function login;
+  late void Function() login;
 
   _ViewModel.build({
-    @required this.login,
+    required this.login,
   }) : super(equals: []);
 
   @override
