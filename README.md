@@ -1,6 +1,6 @@
 # flutter_common_template
 
-flutter项目通用模板
+flutter 项目通用模板
 
 ![building](https://img.shields.io/badge/building-passing-green)
 ![issues](https://img.shields.io/github/issues/chachaxw/flutter_common_template)
@@ -13,6 +13,10 @@ flutter项目通用模板
 这份说明将为你展示该项目结构、所用工具以及运行环境、代码规范等，请认真阅读
 
 ### 1.1.1 🔨 运行
+
+> 升级 Dart SDK 到 beta 2.12.0-0 以上版本，正常情况下运行会出现报错，需要在命令行后面
+> 添加 `--no-sound-null-safety`，绕过最新版 Dart 的 null-safety 机制，具体可以访问
+> [no-sound-null-safety](https://dart.dev/go/no-sound-null-safety) 查看详细说明
 
 默认生产环境 `flutter run`
 
@@ -57,7 +61,7 @@ export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn
 
 生产环境 `./build.sh`
 
-### 1.4.2 iOS构建
+### 1.4.2 iOS 构建
 
 生产环境构建 `flutter build ios --release`
 
@@ -75,11 +79,11 @@ export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn
 
 ### 1.4.4 部署流程
 
-`master` 开发分支, CI自动打包为开发版
+`master` 开发分支, CI 自动打包为开发版
 
-`staging/*` 稳定测试分支, CI自动打包为测试版, 发布给测试和内部人员试用
+`staging/*` 稳定测试分支, CI 自动打包为测试版, 发布给测试和内部人员试用
 
-`release/*` 发布分支, CI自动打包为版发布版, 对外正式发布
+`release/*` 发布分支, CI 自动打包为版发布版, 对外正式发布
 
 ## 1.5 🏯 项目架构说明
 
@@ -175,7 +179,7 @@ Widgets 目录只能放全局的公共组件并保证该文件夹没有冗余的
 
 #### Actions
 
-Actions 目录只能放全局的公共的actions, 比如全局的Loading Action, Alert Action, Dialog Action等。该目录下包含一个`BaseAction`抽象类, 其他所有的Actions都需要继承该BaseAction类, 方便在Actions中获取State数据. 我们的业务逻辑统统都可以放到Action当中的reduce函数中, 该函数可以是同步函数, 也可以是异步函数, 同时需要返回`AppState`.
+Actions 目录只能放全局的公共的 actions, 比如全局的 Loading Action, Alert Action, Dialog Action 等。该目录下包含一个`BaseAction`抽象类, 其他所有的 Actions 都需要继承该 BaseAction 类, 方便在 Actions 中获取 State 数据. 我们的业务逻辑统统都可以放到 Action 当中的 reduce 函数中, 该函数可以是同步函数, 也可以是异步函数, 同时需要返回`AppState`.
 
 ```Dart
 /// Actions目录结构
@@ -197,7 +201,7 @@ abstract class BaseAction extends ReduxAction<AppState> {
 }
 ```
 
-ShowToastAction继承BaseAction类示例:
+ShowToastAction 继承 BaseAction 类示例:
 
 ```Dart
 import 'package:flutter_common_template/actions/actions.dart';
@@ -216,12 +220,12 @@ class ShowToastAction extends BaseAction {
 }
 ```
 
-具体详情可以👉[Action Subclassing](https://pub.flutter-io.cn/packages/async_redux#action-subclassing)
+具体详情可以 👉[Action Subclassing](https://pub.flutter-io.cn/packages/async_redux#action-subclassing)
 
 #### Models
 
-Models 目录包含全局的AppState和CommonState, AppState是全局的基础数据状态, 包含用户信息, 登录信息等基础信息, CommonState是全局通用数据状态, 例如路点数据, 定位数据, 对话框状态等通用数据可以放该文件.
-Model基本结构如下
+Models 目录包含全局的 AppState 和 CommonState, AppState 是全局的基础数据状态, 包含用户信息, 登录信息等基础信息, CommonState 是全局通用数据状态, 例如路点数据, 定位数据, 对话框状态等通用数据可以放该文件.
+Model 基本结构如下
 
 ```Dart
 class MainState {
@@ -237,12 +241,12 @@ class MainState {
 
 ```
 
-所有的 Model 基本包含两个要素，一个`initialState` 初始化状态的方法, 一个修改状态的`copy`方法, 当Action当中需要修改状态时, 可以借助该类下面的copy方法来修改状态, 以便重新渲染UI界面.具体详情可以👉[State Declaration](https://pub.flutter-io.cn/packages/async_redux#state-declaration)
+所有的 Model 基本包含两个要素，一个`initialState` 初始化状态的方法, 一个修改状态的`copy`方法, 当 Action 当中需要修改状态时, 可以借助该类下面的 copy 方法来修改状态, 以便重新渲染 UI 界面.具体详情可以 👉[State Declaration](https://pub.flutter-io.cn/packages/async_redux#state-declaration)
 
 #### View Model
 
-View Model主要用来连接Action 和 State, 页面的数据绑定和页面按钮等事件触发均需通过View Model来连接, 模块与模块之间的职责需划分清楚, 所有的View Model均需继承 BaseModel(async_redux库中的基类), 以便可以访问`dispatch`方法和全局的`state`数据状态, ViewModel的成员变量均需带上`@required`字符, 表明该成员必需存在.
-View Model示例
+View Model 主要用来连接 Action 和 State, 页面的数据绑定和页面按钮等事件触发均需通过 View Model 来连接, 模块与模块之间的职责需划分清楚, 所有的 View Model 均需继承 BaseModel(async_redux 库中的基类), 以便可以访问`dispatch`方法和全局的`state`数据状态, ViewModel 的成员变量均需带上`@required`字符, 表明该成员必需存在.
+View Model 示例
 
 ```Dart
 import 'package:flutter_common_template/pages/login/actions/actions.dart';
@@ -287,18 +291,18 @@ TODO: 待完善...
 
 1. 图片资源需要在 `pubspec.yaml` 中引入才可以使用
 
-    ```Dart
-        flutter:
-        assets:
-            - images/cat.png
-            - images/2x/cat.png
-            - images/3x/cat.png
-    ```
+   ```Dart
+       flutter:
+       assets:
+           - images/cat.png
+           - images/2x/cat.png
+           - images/3x/cat.png
+   ```
 
-    ```Dart
-       /// 页面中引入使用图片
-       new Image.asset('images/cat.png');
-    ```
+   ```Dart
+      /// 页面中引入使用图片
+      new Image.asset('images/cat.png');
+   ```
 
 TODO: 待完善...
 
@@ -371,20 +375,20 @@ type 用于说明 commit 的类别，只允许使用下面 7 个标识
 7. chore：构建过程或辅助工具的变动
 ```
 
-### Git hooks配置说明
+### Git hooks 配置说明
 
 1. 安装 git_hooks 库
 2. 设置环境变量
 
-    ```Flutter
-    # Pub
-    export PATH="$PATH":"$HOME/flutter/.pub-cache/bin"
+   ```Flutter
+   # Pub
+   export PATH="$PATH":"$HOME/flutter/.pub-cache/bin"
 
-    # Dart
-    export PATH=$HOME/flutter/bin/cache/dart-sdk/bin:$PATH
-    ```
+   # Dart
+   export PATH=$HOME/flutter/bin/cache/dart-sdk/bin:$PATH
+   ```
 
-3. 本地激活git_hooks命令 `pub global activate git_hooks`
+3. 本地激活 git_hooks 命令 `pub global activate git_hooks`
 4. 移动到项目根目录运行 `git_hooks create`
 
 ## 1.8 Xcode 11.4 支持特殊说明
@@ -393,12 +397,12 @@ type 用于说明 commit 的类别，只允许使用下面 7 个标识
 
 ## 1.9 问题帮助
 
-1. 使用flutter upgrade 或flutter pub get等命令时，提示waiting for another flutter command to release the startup lock
+1. 使用 flutter upgrade 或 flutter pub get 等命令时，提示 waiting for another flutter command to release the startup lock
 
-    > 先打开任务管理器，结束掉所有dart进程。然后打开你的flutter安装文件夹，
-    找到\bin\cache中的lockfile文件删除。之后重启VS Code。
+   > 先打开任务管理器，结束掉所有 dart 进程。然后打开你的 flutter 安装文件夹，
+   > 找到\bin\cache 中的 lockfile 文件删除。之后重启 VS Code。
 
-2. 国内使用flutter指南 <https://flutter.dev/community/china>
+2. 国内使用 flutter 指南 <https://flutter.dev/community/china>
 3. 遇到如下错误
 
    ```Flutter
@@ -415,44 +419,44 @@ type 用于说明 commit 的类别，只允许使用下面 7 个标识
 
    尝试在 `${rootProject}/android/build.gradle` 下修改
 
-    ```Android
-    buildscript {
-        repositories {
-    //        google()
-    //        jcenter()
-            maven { url 'https://maven.aliyun.com/repository/google' }
-            maven { url 'https://maven.aliyun.com/repository/jcenter' }
-            maven { url 'http://maven.aliyun.com/nexus/content/groups/public' }
-        }
+   ```Android
+   buildscript {
+       repositories {
+   //        google()
+   //        jcenter()
+           maven { url 'https://maven.aliyun.com/repository/google' }
+           maven { url 'https://maven.aliyun.com/repository/jcenter' }
+           maven { url 'http://maven.aliyun.com/nexus/content/groups/public' }
+       }
 
-        dependencies {
-            classpath 'com.android.tools.build:gradle:3.2.1'
-        }
-    }
+       dependencies {
+           classpath 'com.android.tools.build:gradle:3.2.1'
+       }
+   }
 
-    allprojects {
-        repositories {
-    //        google()
-    //        jcenter()
-            maven { url 'https://maven.aliyun.com/repository/google' }
-            maven { url 'https://maven.aliyun.com/repository/jcenter' }
-            maven { url 'http://maven.aliyun.com/nexus/content/groups/public' }
-        }
-    }
+   allprojects {
+       repositories {
+   //        google()
+   //        jcenter()
+           maven { url 'https://maven.aliyun.com/repository/google' }
+           maven { url 'https://maven.aliyun.com/repository/jcenter' }
+           maven { url 'http://maven.aliyun.com/nexus/content/groups/public' }
+       }
+   }
 
-    ```
+   ```
 
-4. 每次切换分支，最好flutter upgrade一下，不然可能出现打包问题。
+4. 每次切换分支，最好 flutter upgrade 一下，不然可能出现打包问题。
 
-5. 打包失败, 考虑./gradlew clean一下
+5. 打包失败, 考虑./gradlew clean 一下
 
-6. 打包出现OOM, 此时可以在gradle.properties配置一下内存大小。
+6. 打包出现 OOM, 此时可以在 gradle.properties 配置一下内存大小。
 
-7. 不能hot reload, 那一定是姿势不对, flutter工程下flutter attach之后, native工程这边需要重新打一个调试包装到手机上, 然后进入flutter模块才可以的
+7. 不能 hot reload, 那一定是姿势不对, flutter 工程下 flutter attach 之后, native 工程这边需要重新打一个调试包装到手机上, 然后进入 flutter 模块才可以的
 
-8. 我的机器打的调试包怎么跑不起来, 出现了JNI native之类的一些错误提示, 这类问题, 优先考虑你的flutter版本和大家一致吗? channel和大家一致吗？
+8. 我的机器打的调试包怎么跑不起来, 出现了 JNI native 之类的一些错误提示, 这类问题, 优先考虑你的 flutter 版本和大家一致吗? channel 和大家一致吗？
 
-9. 2x,3x图似乎加载不了, 那是因为你使用了中文, flutter会把资源反倒一个mainifest中，它是一个map, 如果使用中文, map的key就和路径对不上了, 找不到的话, 就会找默认图啦, 也就是一倍图
+9. 2x,3x 图似乎加载不了, 那是因为你使用了中文, flutter 会把资源反倒一个 mainifest 中，它是一个 map, 如果使用中文, map 的 key 就和路径对不上了, 找不到的话, 就会找默认图啦, 也就是一倍图
 
 ## 2.0 学习资源
 

@@ -8,7 +8,10 @@
       "name": "开发环境",
       "type": "dart",
       "request": "launch",
-      "program": "lib/main_dev.dart"
+      "program": "lib/main_dev.dart",
+      "args": [
+        "--no-sound-null-safety"
+      ]
     },
     {
       "name": "测试环境",
