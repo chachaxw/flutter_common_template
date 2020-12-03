@@ -4,9 +4,9 @@ import 'package:dio/dio.dart';
 class HttpError {
   HttpError(this.code, this.message);
 
-  String code;
+  late String code;
 
-  String message;
+  late String message;
 
   ///HTTP 状态码
   static const int UNAUTHORIZED = 401;

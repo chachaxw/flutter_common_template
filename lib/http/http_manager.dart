@@ -1,8 +1,6 @@
 import 'dart:core';
-
 import 'package:dio/dio.dart';
 import 'package:connectivity/connectivity.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_common_template/utils/utils.dart';
 import 'http_error.dart';
 
@@ -36,7 +34,7 @@ class HttpManager {
 
   factory HttpManager() => _instance;
 
-  Dio _client;
+  late Dio _client;
 
   Dio get client => _client;
 
@@ -48,17 +46,17 @@ class HttpManager {
     }
   }
 
-  ///初始化公共属性
+  /// 初始化公共属性
   ///
   /// [baseUrl] API地址前缀
   /// [connectTimeout] 连接超时时间
   /// [receiveTimeout] 接收超时时间
   /// [interceptors] 基础拦截器
   void init({
-    String baseUrl,
-    int connectTimeout,
-    int receiveTimeout,
-    List<Interceptor> interceptors,
+    required String baseUrl,
+    int? connectTimeout,
+    int? receiveTimeout,
+    List<Interceptor>? interceptors,
   }) {
     _client.options = _client.options.merge(
       baseUrl: baseUrl,
@@ -74,8 +72,8 @@ class HttpManager {
   /// 取消网络请求
   void cancel(String tag) {
     if (_cancelTokens.containsKey(tag)) {
-      if (!_cancelTokens[tag].isCancelled) {
-        _cancelTokens[tag].cancel();
+      if (!_cancelTokens[tag]!.isCancelled) {
+        _cancelTokens[tag]!.cancel();
       }
       _cancelTokens.remove(tag);
     }
@@ -96,16 +94,16 @@ class HttpManager {
 
   /// GET异步网络请求
   ///
-  ///[url] 网络请求地址不包含域名
-  ///[params] url请求参数支持restful
-  ///[options] 请求配置
-  ///[tag] 请求统一标识，用于取消网络请求
+  /// [url] 网络请求地址不包含域名
+  /// [params] url请求参数支持restful
+  /// [options] 请求配置
+  /// [tag] 请求统一标识，用于取消网络请求
   Future<T> get<T>({
-    @required String url,
-    Map<String, dynamic> params,
-    Options options,
-    JsonParse<T> jsonParse,
-    @required String tag,
+    required String url,
+    required String tag,
+    Map<String, dynamic>? params,
+    Options? options,
+    JsonParse<T>? jsonParse,
   }) async {
     return _request(
       url: url,
@@ -119,18 +117,18 @@ class HttpManager {
 
   /// POST异步网络请求
   ///
-  ///[url] 网络请求地址不包含域名
-  ///[data] post 请求参数
-  ///[params] url 请求参数支持 restful
-  ///[options] 请求配置
-  ///[tag] 请求统一标识，用于取消网络请求
+  /// [url] 网络请求地址不包含域名
+  /// [data] post 请求参数
+  /// [params] url 请求参数支持 restful
+  /// [options] 请求配置
+  /// [tag] 请求统一标识，用于取消网络请求
   Future<T> post<T>({
-    @required String url,
+    required String url,
+    required String tag,
     data,
-    Map<String, dynamic> params,
-    Options options,
-    JsonParse<T> jsonParse,
-    @required String tag,
+    Map<String, dynamic>? params,
+    Options? options,
+    JsonParse<T>? jsonParse,
   }) async {
     return _request(
       url: url,
@@ -145,18 +143,18 @@ class HttpManager {
 
   /// patch异步网络请求
   ///
-  ///[url] 网络请求地址不包含域名
-  ///[data] patch 请求参数
-  ///[params] url 请求参数支持 restful
-  ///[options] 请求配置
-  ///[tag] 请求统一标识，用于取消网络请求
+  /// [url] 网络请求地址不包含域名
+  /// [data] patch 请求参数
+  /// [params] url 请求参数支持 restful
+  /// [options] 请求配置
+  /// [tag] 请求统一标识，用于取消网络请求
   Future<T> patch<T>({
-    @required String url,
+    required String url,
+    required String tag,
     data,
-    Map<String, dynamic> params,
-    Options options,
-    JsonParse<T> jsonParse,
-    @required String tag,
+    Map<String, dynamic>? params,
+    Options? options,
+    JsonParse<T>? jsonParse,
   }) async {
     return _request(
       url: url,
@@ -171,18 +169,18 @@ class HttpManager {
 
   /// delete异步网络请求
   ///
-  ///[url] 网络请求地址不包含域名
-  ///[data] patch 请求参数
-  ///[params] url 请求参数支持 restful
-  ///[options] 请求配置
-  ///[tag] 请求统一标识，用于取消网络请求
+  /// [url] 网络请求地址不包含域名
+  /// [data] patch 请求参数
+  /// [params] url 请求参数支持 restful
+  /// [options] 请求配置
+  /// [tag] 请求统一标识，用于取消网络请求
   Future<T> delete<T>({
-    @required String url,
+    required String url,
+    required String tag,
     data,
-    Map<String, dynamic> params,
-    Options options,
-    JsonParse<T> jsonParse,
-    @required String tag,
+    Map<String, dynamic>? params,
+    Options? options,
+    JsonParse<T>? jsonParse,
   }) async {
     return _request(
       url: url,
@@ -197,19 +195,19 @@ class HttpManager {
 
   /// 统一网络请求
   ///
-  ///[url] 网络请求地址不包含域名
-  ///[data] post 请求参数
-  ///[params] url请求参数支持restful
-  ///[options] 请求配置
-  ///[tag] 请求统一标识，用于取消网络请求
+  /// [url] 网络请求地址不包含域名
+  /// [data] post 请求参数
+  /// [params] url请求参数支持restful
+  /// [options] 请求配置
+  /// [tag] 请求统一标识，用于取消网络请求
   Future<T> _request<T>({
-    @required String url,
-    @required String tag,
-    String method,
+    required String url,
+    required String tag,
+    String? method,
     data,
-    Map<String, dynamic> params,
-    Options options,
-    JsonParse<T> jsonParse,
+    Map<String, dynamic>? params,
+    Options? options,
+    JsonParse<T>? jsonParse,
   }) async {
     // 检查网络连接状态
     ConnectivityResult connectResult =
@@ -230,15 +228,13 @@ class HttpManager {
     url = _restfulUrl(url, params);
 
     try {
-      CancelToken cancelToken;
+      CancelToken? cancelToken;
 
-      if (tag != null) {
-        cancelToken =
-            _cancelTokens[tag] == null ? CancelToken() : _cancelTokens[tag];
-        _cancelTokens[tag] = cancelToken;
-      }
+      cancelToken =
+          _cancelTokens[tag] == null ? CancelToken() : _cancelTokens[tag];
+      _cancelTokens[tag] = cancelToken!;
 
-      Response<Map<String, dynamic>> response = await _client.request(
+      Response<Map<String, dynamic>>? response = await _client?.request(
         url,
         queryParameters: params,
         data: data,
@@ -246,16 +242,16 @@ class HttpManager {
         cancelToken: cancelToken,
       );
 
-      String statusCode = response.data["statusCode"];
+      String statusCode = response?.data["statusCode"];
 
       if (statusCode == "0") {
         if (jsonParse != null) {
-          return jsonParse(response.data["data"]);
+          return jsonParse(response?.data["data"]);
         } else {
-          return response.data["data"];
+          return response?.data["data"];
         }
       } else {
-        String message = response.data["statusDesc"];
+        String message = response?.data["statusDesc"];
         // 只能用 Future，外层有 try catch
         return Future.error(HttpError(statusCode, message));
       }
@@ -270,20 +266,20 @@ class HttpManager {
 
   /// 文件上传
   ///
-  ///[url] 网络请求地址不包含域名
-  ///[data] post 请求参数
-  ///[onSendProgress] 上传进度
-  ///[params] url 请求参数支持 restful
-  ///[options] 请求配置
-  ///[tag] 请求统一标识，用于取消网络请求
+  /// [url] 网络请求地址不包含域名
+  /// [data] post 请求参数
+  /// [onSendProgress] 上传进度
+  /// [params] url 请求参数支持 restful
+  /// [options] 请求配置
+  /// [tag] 请求统一标识，用于取消网络请求
   Future<T> upload<T>({
-    @required String url,
-    FormData data,
-    ProgressCallback onSendProgress,
-    Map<String, dynamic> params,
-    Options options,
-    JsonParse<T> jsonParse,
-    @required String tag,
+    required String url,
+    required String tag,
+    FormData? data,
+    ProgressCallback? onSendProgress,
+    Map<String, dynamic>? params,
+    Options? options,
+    JsonParse<T>? jsonParse,
   }) async {
     //检查网络是否连接
     ConnectivityResult connectivityResult =
@@ -305,15 +301,13 @@ class HttpManager {
     url = _restfulUrl(url, params);
 
     try {
-      CancelToken cancelToken;
+      CancelToken? cancelToken;
 
-      if (tag != null) {
-        cancelToken =
-            _cancelTokens[tag] == null ? CancelToken() : _cancelTokens[tag];
-        _cancelTokens[tag] = cancelToken;
-      }
+      cancelToken =
+          _cancelTokens[tag] == null ? CancelToken() : _cancelTokens[tag];
+      _cancelTokens[tag] = cancelToken!;
 
-      Response<Map<String, dynamic>> response = await _client.request(
+      Response<Map<String, dynamic>>? response = await _client.request(
         url,
         onSendProgress: onSendProgress,
         data: data,
@@ -323,6 +317,7 @@ class HttpManager {
       );
 
       String statusCode = response.data["statusCode"];
+
       if (statusCode == "0") {
         // 成功
         if (jsonParse != null) {
@@ -355,13 +350,13 @@ class HttpManager {
   /// [options] 请求配置
   /// [tag] 请求统一标识，用于取消网络请求
   Future<Response> download({
-    @required String url,
-    @required savePath,
-    ProgressCallback onReceiveProgress,
-    Map<String, dynamic> params,
+    required String url,
+    required savePath,
+    required String tag,
+    ProgressCallback? onReceiveProgress,
+    Map<String, dynamic>? params,
     data,
-    Options options,
-    @required String tag,
+    Options? options,
   }) async {
     //检查网络是否连接
     ConnectivityResult connectivityResult =
@@ -384,13 +379,11 @@ class HttpManager {
     url = _restfulUrl(url, params);
 
     try {
-      CancelToken cancelToken;
+      CancelToken? cancelToken;
 
-      if (tag != null) {
-        cancelToken =
-            _cancelTokens[tag] == null ? CancelToken() : _cancelTokens[tag];
-        _cancelTokens[tag] = cancelToken;
-      }
+      cancelToken =
+          _cancelTokens[tag] == null ? CancelToken() : _cancelTokens[tag];
+      _cancelTokens[tag] = cancelToken!;
 
       return _client.download(
         url,

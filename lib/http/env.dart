@@ -6,7 +6,7 @@ enum NetworkEnvironment {
 }
 
 class AppEnvironment {
-  AppEnvironment({this.name, this.env});
+  AppEnvironment({required this.name, required this.env});
 
   final String name;
   final NetworkEnvironment env;

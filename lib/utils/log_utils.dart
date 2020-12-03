@@ -9,17 +9,17 @@ class LogUtils {
     tag = tag;
   }
 
-  static void e(Object object, {required String tag}) {
+  static void e(Object object, {String? tag}) {
     _printLog(tag, '  e  ', object);
   }
 
-  static void v(Object object, {required String tag}) {
+  static void v(Object object, {String? tag}) {
     if (debug) {
       _printLog(tag, '  v  ', object);
     }
   }
 
-  static void _printLog(String tag, String stag, Object object) {
+  static void _printLog(String? tag, String stag, Object object) {
     StringBuffer buff = StringBuffer();
     buff.write((tag == null || tag.isEmpty) ? _TAG_DEFAULT : tag);
     buff.write(stag);

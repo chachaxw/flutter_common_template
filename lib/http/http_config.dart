@@ -1,20 +1,21 @@
 import 'dart:core';
 import 'env.dart';
+// ignore: import_of_legacy_library_into_null_safe
 import 'package:package_info/package_info.dart';
 
 class HttpConfig {
-  String appName;
-  String version;
-  String userToken;
-  String packageName;
-  String buildNumber;
-  NetworkEnvironment env;
+  String? userToken;
+  late String appName;
+  late String version;
+  late String packageName;
+  late String buildNumber;
+  late NetworkEnvironment env;
 
-  static HttpConfig get instance => _getInstance();
+  static HttpConfig? get instance => _getInstance();
 
-  static HttpConfig _instance;
+  static HttpConfig? _instance;
 
-  static HttpConfig _getInstance() {
+  static HttpConfig? _getInstance() {
     if (_instance == null) {
       _instance = new HttpConfig._internal();
     }
@@ -26,7 +27,7 @@ class HttpConfig {
     getAppInfo();
   }
 
-  void setAppEnv(AppEnvironment appEnv) {
+  void setAppEnv(AppEnvironment? appEnv) {
     env = appEnv?.env ?? NetworkEnvironment.PRODUCTION;
   }
 
