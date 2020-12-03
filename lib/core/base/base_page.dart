@@ -42,15 +42,15 @@ mixin _PageStatusWidgetsMiXin<VM extends AppBaseModel, St extends BaseState>
 
 abstract class BasePage<VM extends AppBaseModel, St extends BaseState>
     extends _PageStateLifecycle<VM, St> with _PageStatusWidgetsMiXin<VM, St> {
-  BuildContext _context;
+  late BuildContext _context;
   BuildContext get context => _context;
 
   dynamic arguments;
 
-  St _state;
+  late St _state;
   St get state => _state;
 
-  Dispatch<St> _dispatch;
+  late Dispatch<St> _dispatch;
   Dispatch<St> get dispatch => _dispatch;
 
   BasePage({this.arguments});
@@ -100,7 +100,7 @@ abstract class BasePage<VM extends AppBaseModel, St extends BaseState>
     return false;
   }
 
-  Widget buildHeader(BuildContext context, VM vm) {
+  ObstructingPreferredSizeWidget? buildHeader(BuildContext context, VM vm) {
     if (hideHeader()) {
       return null;
     }
@@ -128,11 +128,11 @@ abstract class BasePage<VM extends AppBaseModel, St extends BaseState>
     );
   }
 
-  Widget rightTitleWidget(BuildContext context, VM vm) {
+  Widget? rightTitleWidget(BuildContext context, VM vm) {
     return null;
   }
 
-  Widget _rightTitleWidget(BuildContext context, VM vm) {
+  Widget? _rightTitleWidget(BuildContext context, VM vm) {
     return rightTitleWidget(context, vm);
   }
 
@@ -156,9 +156,7 @@ abstract class BasePage<VM extends AppBaseModel, St extends BaseState>
   }
 
   void pop() {
-    if (context != null) {
-      StoreProvider.of<St>(context, null).dispatch(NavigateAction.pop());
-    }
+    StoreProvider.of<St>(context, null).dispatch(NavigateAction.pop());
   }
 
   Widget _buildContent(BuildContext context, St state, VM vm) {
@@ -174,7 +172,7 @@ class _BasePageWidget<VM extends AppBaseModel, St extends BaseState>
     extends BaseWidget<St, VM> {
   final BasePage basePage;
 
-  _BasePageWidget({this.basePage, St state, VM vm})
+  _BasePageWidget({required this.basePage, required St state, required VM vm})
       : super(state: state, vm: vm);
 
   @override
