@@ -11,27 +11,21 @@ class HttpConfig {
   late String buildNumber;
   late NetworkEnvironment env;
 
-  static HttpConfig get instance => _getInstance();
+  static final HttpConfig _instance = HttpConfig._internal();
 
-  static late HttpConfig _instance;
-
-  static HttpConfig _getInstance() {
-    // ignore: unnecessary_null_comparison
-    if (_instance == null) {
-      _instance = new HttpConfig._internal();
-    }
-    return _instance;
-  }
+  static HttpConfig get instance => _instance;
 
   // 默认生产环境 需要设置环境调 setAppEnv 方法
   HttpConfig._internal() {
     getAppInfo();
   }
 
+  /// 设置App开发环境
   void setAppEnv(AppEnvironment? appEnv) {
     env = appEnv?.env ?? NetworkEnvironment.PRODUCTION;
   }
 
+  /// 获取App基本信息
   Future<void> getAppInfo() async {
     PackageInfo packageInfo = await PackageInfo.fromPlatform();
     appName = packageInfo.appName;
@@ -40,6 +34,7 @@ class HttpConfig {
     buildNumber = packageInfo.buildNumber;
   }
 
+  /// 获取API Host基本配置
   String getBaseUrl() {
     switch (env) {
       case NetworkEnvironment.DEVELOPMENT:
@@ -56,6 +51,7 @@ class HttpConfig {
     }
   }
 
+  /// 获取HTTP请求头基本配置
   Map<String, String> getHttpHeader() {
     switch (env) {
       case NetworkEnvironment.DEVELOPMENT:

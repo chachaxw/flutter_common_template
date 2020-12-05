@@ -41,12 +41,9 @@ class HttpManager {
   Dio get client => _client;
 
   HttpManager._internal() {
-    // ignore: unnecessary_null_comparison
-    if (_client == null) {
-      BaseOptions options = BaseOptions(
-          connectTimeout: CONNECT_TIMEOUT, receiveTimeout: RECEIVE_TIMEOUT);
-      _client = Dio(options);
-    }
+    BaseOptions options = BaseOptions(
+        connectTimeout: CONNECT_TIMEOUT, receiveTimeout: RECEIVE_TIMEOUT);
+    _client = Dio(options);
   }
 
   /// 初始化公共属性
