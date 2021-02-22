@@ -1,9 +1,11 @@
 import 'dart:core';
-// ignore: import_of_legacy_library_into_null_safe
-import 'package:dio/dio.dart';
+
 // ignore: import_of_legacy_library_into_null_safe
 import 'package:connectivity/connectivity.dart';
+// ignore: import_of_legacy_library_into_null_safe
+import 'package:dio/dio.dart';
 import 'package:flutter_common_template/utils/utils.dart';
+
 import 'http_error.dart';
 
 typedef HttpSuccessCallback<T> = void Function(dynamic data);
@@ -42,7 +44,9 @@ class HttpManager {
 
   HttpManager._internal() {
     BaseOptions options = BaseOptions(
-        connectTimeout: CONNECT_TIMEOUT, receiveTimeout: RECEIVE_TIMEOUT);
+      connectTimeout: CONNECT_TIMEOUT,
+      receiveTimeout: RECEIVE_TIMEOUT,
+    );
     _client = Dio(options);
   }
 

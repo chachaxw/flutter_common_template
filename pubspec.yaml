@@ -19,20 +19,20 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  async_redux: ^6.0.2
+  async_redux: ^7.0.2
   common_utils: ^1.1.1
-  flutter_svg: ^0.19.1
+  flutter_svg: ^0.20.0-nullsafety.3
   http: ^0.12.0+4
   toast: ^0.1.5
   dio: ^3.0.9
-  jpush_flutter: ^0.6.1
+  jpush_flutter: ^0.6.3
   permission: ^0.1.7
-  package_info: ^0.4.0+3
-  connectivity: ^0.4.5+3
-  flutter_bugly: ^0.2.8
+  package_info: ^2.0.0
+  connectivity: ^2.0.2
+  flutter_bugly: ^0.3.0+2
   shared_preferences: ^0.5.3+4
   url_launcher: ^5.0.2
-  flutter_easyloading: ^1.2.0
+  flutter_easyloading: ^2.2.2
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -41,9 +41,9 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
 dev_dependencies:
-  git_hooks: ^0.0.1
+  git_hooks: ^0.1.0
   build_runner: ^1.0.0
-  json_serializable: ^2.0.0
+  json_serializable: ^4.0.1
   flutter_test:
     sdk: flutter
 

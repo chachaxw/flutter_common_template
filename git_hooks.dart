@@ -1,4 +1,6 @@
 import 'dart:io';
+
+// ignore: import_of_legacy_library_into_null_safe
 import 'package:git_hooks/git_hooks.dart';
 
 void main(List<String> arguments) {

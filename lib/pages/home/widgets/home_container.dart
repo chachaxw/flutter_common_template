@@ -1,8 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_common_template/utils/color_utils.dart';
-import '../view_models/view_models.dart';
+
 import '../models/models.dart';
+import '../view_models/view_models.dart';
 
 class HomeContainer extends StatefulWidget {
   final HomeViewModel vm;
@@ -49,6 +50,7 @@ class HomeContainerState extends State<HomeContainer> {
                   CupertinoButton(
                     child: Text("退出登录"),
                     minSize: 32,
+                    pressedOpacity: 0.8,
                     color: AppColors.primaryColor,
                     onPressed: () {
                       widget.vm.logout();

@@ -1,10 +1,10 @@
-import 'package:toast/toast.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_common_template/actions/actions.dart';
-import 'package:flutter_common_template/models/models.dart';
 import 'package:flutter_common_template/http/http.dart';
+import 'package:flutter_common_template/models/models.dart';
 import 'package:flutter_common_template/utils/utils.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:toast/toast.dart';
 
 class ShowDialogAction extends BaseAction {
   String msg;
@@ -29,7 +29,7 @@ class ShowDialogAction extends BaseAction {
             CupertinoButton(
               child: Text('确定'),
               onPressed: () {
-                Navigator.of(context)?.pop();
+                Navigator.of(context).pop();
               },
             ),
           ],

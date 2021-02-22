@@ -8,11 +8,12 @@ PODS:
     - Bugly
     - Flutter
   - JCore (2.4.0)
-  - JPush (3.3.6):
+  - JPush (3.4.0):
     - JCore (< 3.0.0, >= 2.0.0)
   - jpush_flutter (0.0.2):
     - Flutter
-    - JPush
+    - JCore (= 2.4.0)
+    - JPush (= 3.4.0)
   - package_info (0.0.1):
     - Flutter
   - path_provider (0.0.1):
@@ -66,11 +67,11 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   Bugly: fd066c75c4a0eca1440f9b6a84bd37d51bfc85ac
   connectivity: c4130b2985d4ef6fd26f9702e886bd5260681467
-  Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
+  Flutter: 434fef37c0980e73bb6479ef766c45957d4b510c
   flutter_bugly: c9800f4d5bc5bdc27ffdde3417a26ba44266e0c3
   JCore: a29e4b0ee54e1301446dc02d8e1c350404108b34
-  JPush: a401b946dcc76b37335422487201bc1ecc8dd296
-  jpush_flutter: 69133df35eaf9135e540549b154d992c44f8ee44
+  JPush: defaa108c38806f6efdcfaf4c416854d25fca8e5
+  jpush_flutter: 364b245849348e05377d67295d0896ddd664a896
   package_info: 873975fc26034f0b863a300ad47e7f1ac6c7ec62
   path_provider: abfe2b5c733d04e238b0d8691db0cfd63a27a93c
   permission: c186483e23779d53def6b55986323494927c22c8
@@ -78,6 +79,6 @@ SPEC CHECKSUMS:
   shared_preferences: af6bfa751691cdc24be3045c43ec037377ada40d
   url_launcher: 6fef411d543ceb26efce54b05a0a40bfd74cbbef
 
-PODFILE CHECKSUM: aafe91acc616949ddb318b77800a7f51bffa2a4c
+PODFILE CHECKSUM: a75497545d4391e2d394c3668e20cfb1c2bbd4aa
 
-COCOAPODS: 1.9.3
+COCOAPODS: 1.10.1

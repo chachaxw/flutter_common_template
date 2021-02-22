@@ -1,7 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:async_redux/async_redux.dart';
-import 'package:flutter_common_template/utils/utils.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_common_template/models/models.dart';
+import 'package:flutter_common_template/utils/utils.dart';
+
 import 'actions/actions.dart';
 
 class LoginPage extends StatefulWidget {
@@ -71,8 +72,9 @@ class _LoginPageState extends State<LoginPage> {
                       padding: EdgeInsets.all(0),
                       color: AppColors.primaryColor,
                       onPressed: vm.login,
+                      pressedOpacity: 0.8,
                       disabledColor: AppColors.darkBlueColor,
-                      borderRadius: BorderRadius.circular(2),
+                      borderRadius: BorderRadius.circular(25),
                       child: Container(
                         alignment: Alignment.center,
                         child: Text(
