@@ -26,6 +26,7 @@ dependencies:
   toast: ^0.1.5
   dio: ^3.0.9
   recase: ^3.0.1
+  transparent_image: ^1.0.0
   jpush_flutter: ^0.6.3
   permission: ^0.1.7
   package_info: ^2.0.0
