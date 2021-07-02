@@ -109,7 +109,7 @@ class _ViewModel extends BaseModel<AppState> {
   @override
   _ViewModel fromStore() {
     return new _ViewModel.build(
-      login: () => dispatch(LoginAction()),
+      login: () => dispatch!(LoginAction()),
     );
   }
 }

@@ -73,7 +73,7 @@ class _ViewModel extends AppBaseModel<AppState> {
     return new _ViewModel.build(
       isLogin: state.loginState.isLogin,
       showDialog: (BuildContext context, String msg) =>
-          dispatch(ShowDialogAction(context, msg)),
+          dispatch!(ShowDialogAction(context, msg)),
     );
   }
 }

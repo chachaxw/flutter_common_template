@@ -31,9 +31,9 @@ class HomeViewModel extends AppBaseModel<AppState> {
       appEnv: mainState.appEnv,
       tabs: state.homeState.tabs,
       redirect: (String routeName) =>
-          dispatch(NavigateAction.pushNamed(routeName)),
-      logout: () => dispatch(LogoutAction()),
-      setAppEnv: (AppEnvironment env) => dispatch(SaveAppEnvAction(env)),
+          dispatch!(NavigateAction.pushNamed(routeName)),
+      logout: () => dispatch!(LogoutAction()),
+      setAppEnv: (AppEnvironment env) => dispatch!(SaveAppEnvAction(env)),
     );
   }
 }
