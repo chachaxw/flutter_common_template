@@ -24,7 +24,7 @@ Future<void> loadLocalData(Store store, String defaultEnv) async {
     currentEnv = getAppEnv(NetworkEnvironment.PRODUCTION.toString());
   } else {
     /// 默认运行环境为指定的环境
-    currentEnv = getAppEnv(appEnv);
+    currentEnv = getAppEnv(appEnv ?? defaultEnv);
   }
 
   print('当前运行环境 ${currentEnv.name}');
